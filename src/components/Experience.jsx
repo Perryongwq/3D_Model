@@ -70,7 +70,6 @@ const App = () => {
         style={{ width: '100%', height: '100%' }}
       >
         <color attach="background" args={['#808080']} />
-        <Experience />
       </Canvas>
     </div>
   );

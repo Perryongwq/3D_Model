@@ -4,8 +4,12 @@ import { useThree } from "@react-three/fiber";
 import { Avatar } from "./Avatar";
 import * as THREE from 'three';
 
+
 export const Experience = () => {
-  const texture = useTexture('../public/cherry.jpg');
+  const textureUrl = '/cherry.jpg';
+
+  const texture = useTexture(textureUrl);
+
   const { viewport, camera } = useThree();
   const textRef = useRef();
 

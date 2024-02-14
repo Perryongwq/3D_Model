@@ -1,8 +1,7 @@
-import React, { useEffect, useRef } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { Environment, OrbitControls, useTexture, Text } from '@react-three/drei';
-import { useThree } from '@react-three/fiber';
-import { Avatar } from './Avatar';
+import { useRef, useEffect } from 'react';
+import { Environment, OrbitControls, useTexture, Text } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
+import { Avatar } from "./Avatar";
 import * as THREE from 'three';
 
 export const Experience = () => {
@@ -28,10 +27,15 @@ export const Experience = () => {
     }
   }, [camera]);
 
+  // Adjust scale and position based on viewport dimensions
+  const avatarScale = Math.min(viewport.width, viewport.height) / 10;
+  const avatarPosition = [0, -10, 0];
+  const textSize = Math.min(viewport.width, viewport.height) * 0.05;
+
   return (
     <>
       <OrbitControls />
-      <Avatar position={[0, -10, 0]} scale={[3 / 4, 3 / 4, 3 / 4]} />
+      <Avatar position={avatarPosition} scale={[avatarScale, avatarScale, avatarScale]} />
       <Environment preset="sunset" />
       <ambientLight intensity={1} />
       <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
@@ -41,8 +45,8 @@ export const Experience = () => {
       <Text
         ref={textRef}
         color="#FFFFFF" // Text color
-        fontSize={0.4} // Size of the font
-        maxWidth={200} // Max width of the text block
+        fontSize={textSize} // Size of the font
+        maxWidth={viewport.width / 2} // Max width of the text block
         position={[0, 1, 3]} // Position of the text in the scene
       >
         Happy Valentine Day Xiao Huey
@@ -50,29 +54,3 @@ export const Experience = () => {
     </>
   );
 };
-
-const App = () => {
-  const appStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100vw',
-    height: '100vh',
-    background: '#808080',
-    overflow: 'hidden',
-  };
-
-  return (
-    <div style={appStyle}>
-      <Canvas
-        shadows
-        camera={{ position: [0, -3, 7], fov: 30 }}
-        style={{ width: '100%', height: '100%' }}
-      >
-        <color attach="background" args={['#808080']} />
-      </Canvas>
-    </div>
-  );
-};
-
-export default App;

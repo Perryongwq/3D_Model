@@ -2,7 +2,6 @@ import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { Experience } from "./components/Experience";
 
-
 function App() {
   const appStyle = {
     display: 'flex',
@@ -24,7 +23,8 @@ function App() {
         <color attach="background" args={["#808080"]} />
         <Experience />
       </Canvas>
-      
+      {/* Audio element to play music */}
+      <audio src="/Nice.mp3" controls autoPlay loop />
     </div>
   );
 }

@@ -6,9 +6,7 @@ import * as THREE from 'three';
 
 export const Experience = () => {
   const textureUrl = '/cherry.jpg';
-
   const texture = useTexture(textureUrl);
-
   const { viewport, camera } = useThree();
   const textRef = useRef();
 
@@ -27,15 +25,10 @@ export const Experience = () => {
     }
   }, [camera]);
 
-  // Adjust scale and position based on viewport dimensions
-  const avatarScale = Math.min(viewport.width, viewport.height) / 10;
-  const avatarPosition = [0, -10, 0];
-  const textSize = Math.min(viewport.width, viewport.height) * 0.05;
-
   return (
     <>
       <OrbitControls />
-      <Avatar position={avatarPosition} scale={[avatarScale, avatarScale, avatarScale]} />
+      <Avatar position={[0, -10, 0]} scale={[3 / 4, 3 / 4, 3 / 4]} />
       <Environment preset="sunset" />
       <ambientLight intensity={1} />
       <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
@@ -45,8 +38,8 @@ export const Experience = () => {
       <Text
         ref={textRef}
         color="#FFFFFF" // Text color
-        fontSize={textSize} // Size of the font
-        maxWidth={viewport.width / 2} // Max width of the text block
+        fontSize={0.4} // Size of the font
+        maxWidth={200} // Max width of the text block
         position={[0, 1, 3]} // Position of the text in the scene
       >
         Happy Valentine Day Xiao Huey

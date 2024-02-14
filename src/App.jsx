@@ -1,7 +1,7 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { Experience } from "./components/Experience";
-import MusicPlayer from "./components/MusicPlayer";
+
 
 function App() {
   const appStyle = {
@@ -24,7 +24,7 @@ function App() {
         <color attach="background" args={["#808080"]} />
         <Experience />
       </Canvas>
-      <MusicPlayer src='../public/Nice.mp3'/>
+      
     </div>
   );
 }
